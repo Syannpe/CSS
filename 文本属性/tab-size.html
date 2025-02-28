@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+    p{
+      border:red solid 1px;
+      white-space: pre-wrap;
+    }
+    p.custom{
+        tab-size: 3;
+    }
+  </style>
+</head>
+<body>
+<p>no tab</p>
+<p>&#0009;default tab size of 8 characters wide</p>
+<p class="custom">&#0009;custom tab size of 3 characters wide</p>
+<p>&nbsp;&nbsp;&nbsp;3 spaces, equivalent to the custom tab size</p>
+</body>
+</html>

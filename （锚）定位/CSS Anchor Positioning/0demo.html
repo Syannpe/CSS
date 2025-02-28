@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Anchor Positioning Demo</title>
+    <style>
+        .anchor {
+            margin:auto;
+            anchor-name: --myAnchor;
+            width: fit-content;
+        }
+        .infobox {
+            position-anchor: --myAnchor;
+            position: fixed;
+            left: anchor(center);
+            top: anchor(50%);
+        }
+        .infobox p{
+            margin:0;
+        }
+
+    </style>
+</head>
+<body>
+<div class="anchor">⚓(anchor)</div>
+
+<div class="infobox">
+    <p>anchor positioned element</p>
+</div>
+
+</body>
+</html>

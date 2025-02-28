@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        :root {
+            color-scheme: light dark;
+        }
+        header {
+            color-scheme: only light;
+        }
+        main {
+            color-scheme: light dark;
+        }
+        footer {
+            color-scheme: only dark;
+        }
+
+    </style>
+</head>
+<body>
+<h1>使用light和dark颜色方案</h1>
+<p>此页面采用用户的颜色方案偏好。</p>
+<header>
+    <h1>仅使用light颜色方案的标题</h1>
+</header>
+<main>
+    <p>使用light和dark颜色方案的内容。</p>
+</main>
+<footer>
+    <p>仅使用dark颜色方案的页脚。</p>
+</footer>
+<script type="module">
+    document.addEventListener("DOMContentLoaded", function () {
+
+    });
+</script>
+</body>
+</html>

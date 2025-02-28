@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            height: 100vh;
+        }
+
+        #anchor-container {
+            display: grid;
+            height: 100%;
+            grid-template-columns: 1fr 1fr;
+            grid-auto-rows: 1fr 1fr;
+            justify-items: center;
+            align-items: center;
+        }
+
+        .anchor {
+            font-size: 1.8rem;
+            color: white;
+            text-shadow: 1px 1px 1px black;
+            background-color: hsl(240 100% 75%);
+            width: fit-content;
+            border-radius: 10px;
+            border: 1px solid black;
+            padding: 3px;
+        }
+
+        #anchor1 {
+            anchor-name: --myAnchor1, --myAnchor2;
+        }
+
+        .infobox {
+            color: darkblue;
+            background-color: azure;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 1rem;
+            width: 120px;
+            transition: .3s;
+
+        }
+
+        #infobox1 {
+            position-anchor: --myAnchor1;
+            position: fixed;
+            left: anchor(right);
+            top: anchor(50%);
+            transform: translate(0,-50%);
+            /*align-self: anchor-center;*/
+            margin-left: 10px;
+        }
+
+        #infobox2 {
+            position-anchor: --myAnchor2;
+            position: fixed;
+            bottom: anchor(top);
+            left: anchor(50%);
+            transform: translate(-50%);
+
+            /*justify-self: anchor-center;*/
+            margin-bottom: 15px;
+        }
+
+    </style>
+</head>
+<body>
+<p>
+    这个案例展示了，当时一个锚定位元素的position-anchor属性不发生变化时，即使将锚元素改为另一个元素，锚定位元素也可以重新定位。</p>
+<div id="anchor-container">
+    <div class="anchor" id="anchor1">⚓︎</div>
+    <div class="anchor" id="anchor2">⚓︎</div>
+    <div class="anchor" id="anchor3">⚓︎</div>
+    <div class="anchor" id="anchor4">⚓︎</div>
+</div>
+
+<div class="infobox" id="infobox1">
+    <form>
+        <label for="anchor1-anchor-select">Place infobox on:</label>
+        <select id="anchor1-anchor-select">
+            <option value="1">Anchor 1</option>
+            <option value="2">Anchor 2</option>
+            <option value="3">Anchor 3</option>
+            <option value="4">Anchor 4</option>
+        </select>
+    </form>
+</div>
+
+<div class="infobox" id="infobox2">
+    <form>
+        <label for="anchor2-anchor-select">Place infobox on:</label>
+        <select id="anchor2-anchor-select">
+            <option value="1">Anchor 1</option>
+            <option value="2">Anchor 2</option>
+            <option value="3">Anchor 3</option>
+            <option value="4">Anchor 4</option>
+        </select>
+    </form>
+</div>
+<script type="module">
+    document.addEventListener("DOMContentLoaded", function () {
+        // Get references to the two select menus
+        const select1 = document.querySelector("#anchor1-anchor-select");
+        const select2 = document.querySelector("#anchor2-anchor-select");
+// Store references to all the anchors in a NodeList (array-like)
+        const anchors = document.querySelectorAll("#anchor-container > div");
+
+// Set the same change event handler on both select menus
+        select1.addEventListener("change", updateAnchorNames);
+        select2.addEventListener("change", updateAnchorNames);
+
+        function updateAnchorNames() {
+            // Remove all anchor names from all anchors
+            for (const anchor of anchors) {
+                anchor.style.anchorName = "none";
+            }
+
+            // convert the select menu values to numbers, and remove one to
+            // make them match the selected anchors' index positions in the NodeList
+            const value1 = Number(select1.value) - 1;
+            const value2 = Number(select2.value) - 1;
+
+            if (value1 === value2) {
+                // If the chosen anchors are both the same, set both anchor
+                // names on the same anchor
+                anchors[value1].style.anchorName = "--myAnchor1, --myAnchor2";
+            } else {
+                // If they are not the same, set the anchor names separately
+                // on each selected anchor
+                anchors[value1].style.anchorName = "--myAnchor1";
+                anchors[value2].style.anchorName = "--myAnchor2";
+            }
+        }
+
+    })
+</script>
+</body>
+</html>

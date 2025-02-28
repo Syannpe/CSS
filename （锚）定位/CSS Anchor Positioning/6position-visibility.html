@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        section {
+            overflow: scroll;
+            height: 250px;
+        }
+
+        div {
+            border: #000 solid 1px;
+        }
+
+        .anchor-ele {
+            margin: 100px auto;
+            width: 200px;
+            anchor-name: --anchor1;
+            /*visibility: hidden;*/
+        }
+
+        .anchor-positioned-ele {
+            /*position: fixed;*/
+            position-anchor: --anchor1;
+            /*position-visibility: always | anchors-visible | no-overflow;;*/
+            position-visibility: no-overflow;
+
+            position-area: center bottom;
+            /*left: anchor(center);*/
+            /*top: anchor(bottom);*/
+        }
+    </style>
+</head>
+<body>
+<section>
+    <div class="anchor-ele">anchor</div>
+    <div class="anchor-positioned-ele">anchor-positioned</div>
+</section>
+<script type="module">
+    document.addEventListener("DOMContentLoaded", function () {
+
+    });
+</script>
+</body>
+</html>

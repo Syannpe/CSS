@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            border: 1px solid black;
+        }
+
+        body {
+            width: 150vw;
+            height: 150vh;
+        }
+
+        .anchor {
+            anchor-name: --myAnchor;
+            width: 100px;
+            margin: 100px 350px;
+        }
+
+        .infobox {
+            position: fixed;
+            position-anchor: --myAnchor;
+            position-area: top left;
+
+            position-try: flip-block,
+            flip-inline,
+            flip-block flip-inline;
+            position-try-fallbacks: flip-block,
+            flip-inline,
+            flip-block flip-inline;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="anchor">⚓︎</div>
+
+<div class="infobox">
+    <p>This is an information box.</p>
+</div>
+
+
+当一个锚定位元素如果按照正常设定如果溢出的情况下会触发position-try-fallbacks属性的功能<br/>
+这个功能可以依次尝试候选定位参数，选择一个不会溢出的定位参数。<br/>
+参数如下：<br/>
+预定义参数：<br/>
+flip-inline：如果溢出，则尝试将定位元素水平翻转。<br/>
+flip-block：如果溢出，则尝试将定位元素垂直翻转。<br/>
+flip-start：翻转块轴和行内轴的值，将起始属性和结束属性互换。<br/>
+position-area value：就是重新使用position-area的属性值重新赋值<br/>
+dashed-ident：添加一个自定义的@position-try选项到备用选项列表中，<br/>
+其名称与指定的dashed-ident匹配。如果没有具有该名称的自定义位置选项，则忽略该选项。<br/>
+
+<script type="module">
+    document.addEventListener("DOMContentLoaded", function () {
+
+    });
+</script>
+</body>
+</html>

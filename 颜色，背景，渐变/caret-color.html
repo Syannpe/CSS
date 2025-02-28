@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        input {
+            caret-color: auto;
+            display: block;
+            margin-bottom: 0.5em;
+        }
+
+        input.custom {
+            caret-color: red;
+        }
+
+        p.custom {
+            caret-color: green;
+        }
+    </style>
+</head>
+<body>
+输入栏后面的打字光标的颜色
+<input value="This field uses a default caret." size="64"/>
+<input class="custom" value="I have a custom caret color!" size="64"/>
+<p contenteditable class="custom">
+    This paragraph can be edited, and its caret has a custom color as well!
+</p>
+
+<script type="module">
+    document.addEventListener("DOMContentLoaded", function () {
+
+    });
+</script>
+</body>
+</html>

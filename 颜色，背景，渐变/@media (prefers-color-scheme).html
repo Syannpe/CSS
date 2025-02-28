@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            color-scheme: light dark;
+        }
+
+        /*可以通过注释掉两个@media来测试light-dark函数
+        这个函数用于当首选是暗色调的时候和亮色调的时候分别指定什么颜色
+        */
+        .element {
+            color: light-dark(orange, green);
+            background-color: light-dark(green, orange);
+        }
+
+        @media (prefers-color-scheme: light) {
+            .element {
+                color: black;
+                background-color: white;
+            }
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .element {
+                color: white;
+                background-color: black;
+            }
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+<div class="element">
+    <h1>欢迎光临</h1>
+    <p>此段落根据用户的颜色方案偏好进行样式调整。</p>
+</div>
+</body>
+</html>

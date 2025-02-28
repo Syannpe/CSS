@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .anchor {
+            border: 1px solid black;
+            anchor-name: --myAnchor;
+            margin: 30vh auto 50vh;
+            width: min-content;
+        }
+
+        @position-try --custom-bottom {
+            top: anchor(bottom);
+            bottom: unset;
+            margin-top: 10px;
+        }
+        .infobox {
+            border: 1px solid black;
+            position: fixed;
+            position-anchor: --myAnchor;
+
+            bottom: anchor(top);
+            margin-bottom: 10px;
+            justify-self: anchor-center;
+
+            position-try-fallbacks: --custom-bottom;
+            position-try-order: normal;
+        }
+
+    </style>
+</head>
+<body>
+<p>此属性需要和position-try-fallbacks属性共同使用，
+    就是当position-try-fallbacks属性提供多种可能时，
+    position-try-order会设定一个规律并通过这个规律来应用position-try-fallbacks的值
+    例如，当position-try-order为--custom-bottom时，
+    当position-try-order设定为most-height时，会优先应用position-try-fallbacks中最能利用空间的值
+</p>
+<div class="anchor">⚓</div>
+
+<div class="infobox">
+    <p>This is an information box.</p>
+</div>
+
+<form>
+    <fieldset>
+        <legend>Choose a try order</legend>
+        <div>
+            <label for="radio-normal">normal</label>
+            <input
+                    type="radio"
+                    id="radio-normal"
+                    name="position-try-order"
+                    value="normal"
+                    checked/>
+        </div>
+        <div>
+            <label for="radio-most-height">most-height</label>
+            <input
+                    type="radio"
+                    id="radio-most-height"
+                    name="position-try-order"
+                    value="most-height"/>
+        </div>
+    </fieldset>
+</form>
+
+<script type="module">
+    document.addEventListener("DOMContentLoaded", function () {
+        const infobox = document.querySelector(".infobox");
+        const form = document.forms[0];
+        const radios = form.elements["position-try-order"];
+
+        for (const radio of radios) {
+            radio.addEventListener("change", setTryOrder);
+        }
+
+        function setTryOrder(e) {
+            const tryOrder = e.target.value;
+            infobox.style.positionTryOrder = tryOrder;
+        }
+
+    });
+</script>
+</body>
+</html>

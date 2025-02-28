@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        .anchor {
+            margin: 10vh auto;
+            anchor-name: --myAnchor;
+            width: 10vh;
+            height: 10vh;
+            border: 3px solid #639;
+
+        }
+
+        .infobox {
+            position-anchor: --myAnchor;
+            position: fixed;
+            position-area: start;
+            border: 3px solid #6398;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+position-area是anchor()定位的代替，position-area CSS
+属性允许锚定定位的元素相对于其关联的锚定元素的边缘进行定位，
+通过将定位的元素放置在隐式 3x3 网格的一个或多个单元格上，
+其中锚定元素是中心单元格。
+<div class="infobox">
+</div>
+<div class="anchor">
+</div>
+<script type="module">
+    import {JSONParser} from "../../libs/JSONParser.js";
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const infobox = this.querySelector(".infobox");
+
+        let jsonParser = new JSONParser({
+            param1: ["start", "center", "end"],
+            param2: ["start", "center", "end"],
+            "第一个参数前面是否有span": false,
+            "第二个参数前面是否有span": false
+        });
+        jsonParser.import("../libs/JSONParser.css")
+        document.body.appendChild(jsonParser.initTable());
+
+        jsonParser.onJsonChange = function (ev) {
+            const res = jsonParser.toJSON();
+            infobox.style.positionArea = `${res["第一个参数前面是否有span"]?"span-"+res.param1:res.param1} ${res["第二个参数前面是否有span"]?"span-"+res.param2:res.param2}`
+        };
+    });
+</script>
+</body>
+</html>

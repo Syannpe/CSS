@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .unselectable {
+            -webkit-user-select: none; /* Safari */
+            user-select: none;
+        }
+
+        .all {
+            -webkit-user-select: all;
+            user-select: all;
+        }
+
+    </style>
+</head>
+<body>
+各个属性说明：
+none 元素及其子元素的文本不可选择。请注意，Selection 对象可以包含这些元素。
+
+auto auto 的使用值确定如下：
+对于 ::before 和 ::after 伪元素，使用值为 none
+如果该元素的父元素上 user-select 的使用值为 none，则该元素的使用值为 none
+否则，如果该元素的父元素上 user-select 的使用值为 all，则该元素的使用值为 all
+否则，使用值为 text
+
+text 用户可以选择文本。
+
+all 元素的内容应当被原子性地选择：如果选择包含元素的一部分，
+则选择必须包含整个元素及其所有后代。如果在子元素中发生双击或上下文点击，
+则将选择具有此值的最高祖先元素。
+<p>You should be able to select this text.</p>
+<p class="unselectable">Hey, you can't select this text!</p>
+<p class="all">Clicking once will select all of this text.</p>
+
+<script type="module">
+    document.addEventListener("DOMContentLoaded", function () {
+
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+这个模块有两个概念：锚元素（anchor elements），锚定位元素（anchor-positioned elements）
+锚定位元素会被绑定到锚元素，随着锚元素移动而移动，就是把两个元素绑定到一起
+他可以被使用到：
+1、表单文本框上的错误提示信息
+2、纵向菜单的二级菜单定位
+将一个元素设置为锚元素，首先要使用anchor-name属性设定一个锚名称，
+将一个元素设定为锚定位元素需要：使用position属性将其设定为fixed或absolute
+之后使用position-anchor属性，将其值设置为anchor-name值，将两者关联起来
+设置好这两个属性并不意味他们两个的位置会随着彼此的变化而变化
+
+还可以使用HTML方法声明锚定位。使用id来指定锚元素名称。使用anchor属性来声明锚定位元素的锚
+也需要指定position属性为fixed或absolute
+
+将锚定位元素设定完毕后，需要通过top,left之类的属性设置成anchor()函数
+anchor函数定义如下：
+anchor(<anchor-name> <anchor-side>, <fallback>)
+锚点名称，
+锚点相对定位，例如top,left,start,self-end
+回调位置：如果不好使的话设定成什么位置
+
+
+Setting a position-area

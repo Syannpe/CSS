@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>position-visibility Demo</title>
+    <style>
+        body {
+            width: 200px;
+            height: 300px;
+            margin: 0 auto;
+        }
+
+        .anchor {
+            font-size: 1.8rem;
+            color: white;
+            text-shadow: 1px 1px 1px black;
+            background-color: hsl(240 100% 75%);
+            width: fit-content;
+            border-radius: 10px;
+            border: 1px solid black;
+            padding: 3px;
+        }
+
+        form {
+            position: fixed;
+            background: white;
+            top: 2px;
+            left: 2px;
+        }
+
+        .infobox {
+            color: darkblue;
+            background-color: azure;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+
+        .anchor {
+            anchor-name: --myAnchor;
+        }
+
+        .infobox {
+            position-anchor: --myAnchor;
+            position: fixed;
+            position-area: top span-all;
+            margin-bottom: 5px;
+            position-visibility: always;
+        }
+
+
+    </style>
+</head>
+<body>
+<p>
+    Malesuada nunc vel risus commodo viverra maecenas accumsan lacus. Vel elit
+    scelerisque mauris pellentesque pulvinar pellentesque habitant morbi
+    tristique.
+</p>
+
+<p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+    incididunt ut labore et dolore magna aliqua. Dui nunc mattis enim ut tellus
+    elementum sagittis vitae et.
+</p>
+
+<p>
+    Malesuada nunc vel risus commodo viverra maecenas accumsan lacus. Vel elit
+    scelerisque mauris pellentesque pulvinar pellentesque habitant morbi
+    tristique. Porta lorem mollis aliquam ut porttitor. Turpis cursus in hac
+    habitasse platea dictumst quisque.
+</p>
+
+<div class="anchor">⚓︎</div>
+
+<div class="infobox">
+    <p>This is an information box.</p>
+</div>
+
+<p>
+    Nisi quis eleifend quam adipiscing vitae proin sagittis nisl rhoncus. In arcu
+    cursus euismod quis viverra nibh cras pulvinar. Vulputate ut pharetra sit amet
+    aliquam.
+</p>
+
+<p>
+    Malesuada nunc vel risus commodo viverra maecenas accumsan lacus. Vel elit
+    scelerisque mauris pellentesque pulvinar pellentesque habitant morbi
+    tristique. Porta lorem mollis aliquam ut porttitor. Turpis cursus in hac
+    habitasse platea dictumst quisque. Dolor sit amet consectetur adipiscing elit.
+    Ornare lectus sit amet est placerat. Nulla aliquet porttitor lacus luctus
+    accumsan.
+</p>
+
+<form>
+    <fieldset>
+        <legend>Choose position visibility</legend>
+        <div>
+            <label for="radio-always">always</label>
+            <input
+                    type="radio"
+                    id="radio-always"
+                    name="position-visibility"
+                    value="always"
+                    checked />
+        </div>
+        <div>
+            <label for="radio-anchors-visible">anchors-visible</label>
+            <input
+                    type="radio"
+                    id="radio-anchors-visible"
+                    name="position-visibility"
+                    value="anchors-visible" />
+        </div>
+        <div>
+            <label for="radio-no-overflow">no-overflow</label>
+            <input
+                    type="radio"
+                    id="radio-no-overflow"
+                    name="position-visibility"
+                    value="no-overflow" />
+        </div>
+    </fieldset>
+</form>
+
+
+<script type="module">
+    document.addEventListener("DOMContentLoaded", function () {
+        const infobox = document.querySelector(".infobox");
+        const radios = document.querySelectorAll('[name="position-visibility"]');
+
+        for (const radio of radios) {
+            radio.addEventListener("change", setPositionVisibility);
+        }
+
+        function setPositionVisibility(e) {
+            infobox.style.positionVisibility = e.target.value;
+        }
+
+
+    });
+</script>
+</body>
+</html>
