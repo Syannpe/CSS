@@ -6,16 +6,25 @@
     <style>
         .parentRule {
             /* parent rule style properties */
+
+            /*这个属性用于设置选中元素的子元素*/
             :hover {
                 /* child rule style properties */
                 color: red;
             }
         }
+
         .parentRule2 {
             /* parent rule style properties */
+
+            /*&符号表示当前选择器*/
             &:hover {
                 /* child rule style properties */
                 color: red;
+            }
+
+            :hover {
+                color: yellow;
             }
         }
     </style>

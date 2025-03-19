@@ -34,6 +34,7 @@
     </style>
 </head>
 <body>
+表示两个mask的融合方式，四个参数分别是：相加，相减，求交集，求并集
 <ol id="alpha">
     <li>oneoneoneone</li>
     <li>twotwotwotwo</li>
@@ -63,7 +64,7 @@
 
         let ui = new ControlsUI(controls);
 
-        ui.initDefaultStyle("../ControlsUI.css",{left:0}).initControls().bindItemEvent({
+        ui.initDefaultStyle("../libs/ControlsUI.css",{left:0}).initControls().bindItemEvent({
             click(ev,p,ul){
                 console.log(`maskComposite = ${p.innerText.trim()}`);
                 ol.style.maskComposite = p.innerText.trim();

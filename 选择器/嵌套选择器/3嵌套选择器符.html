@@ -7,6 +7,11 @@
         .parentRule {
             /* parent rule style properties */
 
+            /*
+            这行代码表示选中.parentRule选择器所选中元素的.childRule元素
+            之后选中后代元素中可以和当前选择器（.parentRule）匹配的元素，
+            之后再选中上一步选中的元素的后代中可以和当前选择器（.parentRule）选择器匹配的元素
+            */
             .childRule & &{
                 /* child rule style properties */
                 color: red;
@@ -19,6 +24,7 @@
     <div class="childRule">34
         <div class="parentRule">56
             <span class="parentRule">78</span>
+            <span class="notParentRule">910</span>
         </div>
     </div>
 </div>
