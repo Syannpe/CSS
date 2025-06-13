@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #contained_element {
+            border: 2px solid green;
+            inline-size: 151px;
+            content-visibility: auto;
+            contain-intrinsic-inline-size: 153px;
+            contain-intrinsic-block-size: 52px;
+        }
+
+        .child_element {
+            border: 1px solid red;
+            background: blue;
+            block-size: 50px;
+            inline-size: 150px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="contained_element">
+    <div class="child_element"></div>
+
+</div>
+<ul>
+    <li>优化渲染性能：减少不必要的计算，特别是在 content-visibility: auto 这样的场景下，它能帮助浏览器 记住
+        元素曾经的大小，而不必重新计算。</li>
+    <li>提高页面流畅度：避免因元素消失或出现导致页面跳动。</li>
+    <li>更好地控制隐藏元素的布局：适用于懒加载或动态内容，使页面在隐藏元素时仍保持合理的结构</li>
+</ul>
+<script type="module">
+    document.addEventListener("DOMContentLoaded", function () {
+        const containedElement = document.getElementById("contained_element");
+        const spanElement = document.querySelector("#contained_element+span");
+
+        this.onclick = function () {
+            containedElement.style.display = "none";
+        };
+
+    });
+</script>
+</body>
+</html>
