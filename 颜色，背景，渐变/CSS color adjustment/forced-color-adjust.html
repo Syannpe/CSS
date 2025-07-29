@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            border: 5px solid grey;
+            background-color: #ccc;
+            width: 300px;
+            margin: 20px;
+            padding: 10px;
+        }
+
+        @media (forced-colors: active) {
+            .forced {
+                forced-color-adjust: none;
+            }
+        }
+
+    </style>
+</head>
+<body>
+<div class="box">
+    <p>This is a box which should use your color preferences.</p>
+</div>
+
+<div class="box forced">
+    <p>This is a box which should stay the colors set by the site.</p>
+</div>
+
+<script type="module">
+    document.addEventListener("DOMContentLoaded", function () {
+
+    });
+</script>
+</body>
+</html>

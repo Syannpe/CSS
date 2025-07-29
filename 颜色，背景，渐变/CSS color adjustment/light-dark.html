@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>下拉控制 color‑scheme Demo</title>
+    <meta name="color-scheme" content="light dark">
+    <style>
+        /* 1. 全局支持浅/深色 */
+        :root {
+            color-scheme: light dark;
+        }
+
+        /* 2. 默认元素样式自动根据系统偏好切换 */
+        #demo {
+            width: 300px;
+            padding: 20px;
+            margin-top: 20px;
+            border: 2px solid;
+            border-radius: 8px;
+            background-color: light-dark(green, red);
+            color: light-dark(yellow, blue);
+            transition: background-color .3s, color .3s, border-color .3s;
+        }
+
+
+        /* 4. 用户通过下拉选择“强制浅” */
+        :root:has(select#theme[value="light"]:checked) #demo {
+            background: #fff;
+            color: #000;
+            border-color: #000;
+        }
+        /* 5. 用户通过下拉选择“强制深” */
+        :root:has(select#theme[value="dark"]:checked) #demo {
+            background: #333;
+            color: #eee;
+            border-color: red;
+        }
+    </style>
+</head>
+<body>
+<h1>使用下拉选择控制 color-scheme</h1>
+<label>
+    主题选择：
+    <select id="theme">
+        <option value="auto">跟随系统</option>
+        <option value="light">浅色模式</option>
+        <option value="dark">深色模式</option>
+    </select>
+</label>
+
+<div id="demo">
+    这是 demo 区域，样式会根据“系统偏好”或“下拉选择”变化。
+</div>
+</body>
+</html>

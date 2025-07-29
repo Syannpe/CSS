@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态切换 color‑scheme 示例</title>
+    <!-- 提前告知浏览器支持的 color-scheme -->
+    <meta name="color-scheme" content="light dark">
+    <style>
+        /* 设置 body 或容器支持 light 和 dark */
+        :root {
+            color-scheme: light dark;
+        }
+
+        /* 示例目标元素 */
+        #demo {
+            width: 300px;
+            padding: 20px;
+            margin-top: 20px;
+            border: 2px solid;
+            border-radius: 8px;
+            /* 使用 light‑dark() 根据 color‑scheme 自动切换背景和文字颜色 */
+            background-color: light-dark(#fff, #333);
+            color: light-dark(#000, #eee);
+            transition: background-color .3s, color .3s, border-color .3s;
+        }
+
+        /* 根据 element 自身设置的 color-scheme 属性重写样式 */
+        #demo[color-scheme="light"] {
+            background-color: #fff;
+            color: #000;
+            border-color: #000;
+        }
+        #demo[color-scheme="dark"] {
+            background-color: #333;
+            color: #eee;
+            border-color: #eee;
+        }
+    </style>
+</head>
+<body>
+<h1>动态 color‑scheme 切换</h1>
+<label>
+    选择风格：
+    <select id="schemeSelector">
+        <option value="auto">自动（系统默认）</option>
+        <option value="light">浅色模式</option>
+        <option value="dark">深色模式</option>
+    </select>
+</label>
+
+<div id="demo">
+    这是带 `color‑scheme` 属性的目标元素。风格会随选择发生变化。
+</div>
+
+<script>
+    const select = document.getElementById('schemeSelector');
+    const demo = document.getElementById('demo');
+
+    select.addEventListener('change', () => {
+        const v = select.value;
+        if (v === 'auto') {
+            demo.removeAttribute('color-scheme');
+        } else {
+            demo.setAttribute('color-scheme', v);
+        }
+    });
+</script>
+</body>
+</html>

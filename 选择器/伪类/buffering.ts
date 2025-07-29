@@ -1,4 +1,4 @@
-import { serve } from "https://deno.land/std/http/server.ts";
+import { serve } from "@std/http/server";
 
 const server = serve({ port: 8000 });
 console.log("Server is running on http://localhost:8000");
